@@ -3,12 +3,19 @@ const axios = require('axios');
 const router = express.Router();
 
 const getScoreMessage = (score) => {
-  if (score >= 1 && score <= 4) {
+  // Verificar si el puntaje es null o undefined
+  if (score === null || score === undefined) {
+    return 'No tiene puntaje.';
+  }
+  // Establecer los rangos y los mensajes correspondientes
+  else if (score >= 1 && score < 5) {
     return 'No lo recomiendo.';
-  } else if (score >= 5 && score <= 7) {
+  } else if (score >= 5 && score < 7) {
     return 'Puedes divertirte.';
-  } else {
+  } else if (score >= 7 && score <= 15) {
     return 'Genial, esto es uno de los mejores animes.';
+  } else {
+    return 'no tiene puntaje.';
   }
 };
 
